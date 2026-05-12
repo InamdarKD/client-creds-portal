@@ -81,21 +81,27 @@ async function loadClientCredentials(clientId) {
 
     console.log('Client Data:', data);
 
-    /* STORE USER CREDS */
+    /* SAFE DEFAULTS */
 
-    window.currentCredentials =
+    const credentials =
       data.credentials || [];
 
-    /* STORE COMM CREDS */
+    const communicationIds =
+      data.communicationIds || [];
+
+    /* STORE GLOBALS */
+
+    window.currentCredentials =
+      credentials;
 
     window.currentCommCredentials =
-      data.communicationIds || [];
+      communicationIds;
 
     /* TITLE */
 
     document.getElementById(
       'clientTitle'
-    ).innerText = data.client;
+    ).innerText = data.client || clientId;
 
     /* =========================
        USER CREDENTIAL TABLE
@@ -108,7 +114,7 @@ async function loadClientCredentials(clientId) {
 
     table.innerHTML = '';
 
-    data.credentials.forEach(
+    credentials.forEach(
       (cred, index) => {
 
         const row =
@@ -116,18 +122,18 @@ async function loadClientCredentials(clientId) {
 
         row.innerHTML = `
 
-          <td>${cred.system}</td>
+          <td>${cred.system || ''}</td>
 
           <td>
             <a
-              href="${cred.url}"
+              href="${cred.url || '#'}"
               target="_blank"
             >
-              ${cred.url}
+              ${cred.url || ''}
             </a>
           </td>
 
-          <td>${cred.username}</td>
+          <td>${cred.username || ''}</td>
 
           <td>
 
@@ -139,7 +145,7 @@ async function loadClientCredentials(clientId) {
               class="show-btn"
               onclick="togglePassword(
                 ${index},
-                '${cred.password}'
+                '${cred.password || ''}'
               )"
             >
               Show
@@ -170,7 +176,7 @@ async function loadClientCredentials(clientId) {
 
     commTable.innerHTML = '';
 
-    data.communicationIds.forEach(
+    communicationIds.forEach(
       (cred, index) => {
 
         const row =
@@ -178,18 +184,18 @@ async function loadClientCredentials(clientId) {
 
         row.innerHTML = `
 
-          <td>${cred.system}</td>
+          <td>${cred.system || ''}</td>
 
           <td>
             <a
-              href="${cred.url}"
+              href="${cred.url || '#'}"
               target="_blank"
             >
-              ${cred.url}
+              ${cred.url || ''}
             </a>
           </td>
 
-          <td>${cred.username}</td>
+          <td>${cred.username || ''}</td>
 
           <td>
 
@@ -201,7 +207,7 @@ async function loadClientCredentials(clientId) {
               class="show-btn"
               onclick="toggleCommPassword(
                 ${index},
-                '${cred.password}'
+                '${cred.password || ''}'
               )"
             >
               Show
@@ -239,11 +245,10 @@ async function loadClientCredentials(clientId) {
     );
 
     alert(
-      'Unable to load client credentials.'
+      'Unable to load client credentials'
     );
   }
 }
-
 /* =========================
    SHOW PASSWORD
 ========================= */
