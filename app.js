@@ -1,7 +1,7 @@
 function createClientPage() {
 
   const clientName =
-    prompt('Enter Client Name');
+    prompt('Enter Client Name ');
 
   if (!clientName) return;
 
