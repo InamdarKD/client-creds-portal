@@ -22,12 +22,6 @@
       "url": "https://cpi.example.com",
       "username": "COMM_USER_01",
       "password": "Comm@123"
-    },
-    {
-      "system": "API",
-      "url": "https://api.example.com",
-      "username": "API_COMM",
-      "password": "Api@123"
     }
   ]
 }
