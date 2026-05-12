@@ -7,7 +7,7 @@ body {
   margin: 0;
 
   padding: 20px;
-} 
+}
 
 .container {
 
@@ -28,7 +28,7 @@ h2 {
 
   padding: 12px;
 
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   border-radius: 8px;
 
@@ -74,14 +74,9 @@ h2 {
 
 .top-bar {
 
-  display: flex;
-
-  gap: 10px;
-
   margin-bottom: 20px;
 }
 
-.add-btn,
 .back-btn,
 .show-btn,
 .copy-btn {
@@ -97,11 +92,6 @@ h2 {
   color: white;
 }
 
-.add-btn {
-
-  background: #28a745;
-}
-
 .back-btn {
 
   background: #1f4e79;
@@ -110,11 +100,15 @@ h2 {
 .show-btn {
 
   background: #007bff;
+
+  margin-left: 5px;
 }
 
 .copy-btn {
 
   background: #17a2b8;
+
+  margin-left: 5px;
 }
 
 table {
