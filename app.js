@@ -14,7 +14,10 @@ async function loadClients() {
     clients =
       await response.json();
 
-    console.log('Clients Loaded:', clients);
+    console.log(
+      'Clients Loaded:',
+      clients
+    );
 
     renderClients(clients);
 
@@ -79,7 +82,10 @@ async function loadClientCredentials(clientId) {
     const data =
       await response.json();
 
-    console.log('Client Data:', data);
+    console.log(
+      'Client Data:',
+      data
+    );
 
     /* SAFE DEFAULTS */
 
@@ -101,10 +107,11 @@ async function loadClientCredentials(clientId) {
 
     document.getElementById(
       'clientTitle'
-    ).innerText = data.client || clientId;
+    ).innerText =
+      data.client || clientId;
 
     /* =========================
-       USER CREDENTIAL TABLE
+       USER CREDENTIALS
     ========================== */
 
     const table =
@@ -166,7 +173,7 @@ async function loadClientCredentials(clientId) {
     );
 
     /* =========================
-       COMMUNICATION IDS TABLE
+       COMMUNICATION IDS
     ========================== */
 
     const commTable =
@@ -176,56 +183,71 @@ async function loadClientCredentials(clientId) {
 
     commTable.innerHTML = '';
 
-    communicationIds.forEach(
-      (cred, index) => {
+    if (
+      communicationIds.length > 0
+    ) {
 
-        const row =
-          document.createElement('tr');
+      communicationIds.forEach(
+        (cred, index) => {
 
-        row.innerHTML = `
+          const row =
+            document.createElement('tr');
 
-          <td>${cred.system || ''}</td>
+          row.innerHTML = `
 
-          <td>
-            <a
-              href="${cred.url || '#'}"
-              target="_blank"
-            >
-              ${cred.url || ''}
-            </a>
+            <td>${cred.system || ''}</td>
+
+            <td>
+              <a
+                href="${cred.url || '#'}"
+                target="_blank"
+              >
+                ${cred.url || ''}
+              </a>
+            </td>
+
+            <td>${cred.username || ''}</td>
+
+            <td>
+
+              <span id="comm-pwd-${index}">
+                ••••••••
+              </span>
+
+              <button
+                class="show-btn"
+                onclick="toggleCommPassword(
+                  ${index},
+                  '${cred.password || ''}'
+                )"
+              >
+                Show
+              </button>
+
+              <button
+                class="copy-btn"
+                onclick="copyCommCredentialByIndex(${index})"
+              >
+                Copy
+              </button>
+
+            </td>
+          `;
+
+          commTable.appendChild(row);
+        }
+      );
+
+    } else {
+
+      commTable.innerHTML = `
+        <tr>
+          <td colspan="4">
+            No Communication IDs Available
           </td>
-
-          <td>${cred.username || ''}</td>
-
-          <td>
-
-            <span id="comm-pwd-${index}">
-              ••••••••
-            </span>
-
-            <button
-              class="show-btn"
-              onclick="toggleCommPassword(
-                ${index},
-                '${cred.password || ''}'
-              )"
-            >
-              Show
-            </button>
-
-            <button
-              class="copy-btn"
-              onclick="copyCommCredentialByIndex(${index})"
-            >
-              Copy
-            </button>
-
-          </td>
-        `;
-
-        commTable.appendChild(row);
-      }
-    );
+        </tr>
+      `;
+    }
 
     /* PAGE SWITCH */
 
@@ -249,6 +271,7 @@ async function loadClientCredentials(clientId) {
     );
   }
 }
+
 /* =========================
    SHOW PASSWORD
 ========================= */
@@ -256,7 +279,9 @@ async function loadClientCredentials(clientId) {
 function togglePassword(index, password) {
 
   const element =
-    document.getElementById(`pwd-${index}`);
+    document.getElementById(
+      `pwd-${index}`
+    );
 
   if (
     element.innerText === '••••••••'
@@ -330,7 +355,9 @@ Password: ${cred.password}`;
 
   navigator.clipboard.writeText(payload);
 
-  alert('Communication credential copied');
+  alert(
+    'Communication credential copied'
+  );
 }
 
 /* =========================
