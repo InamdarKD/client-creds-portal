@@ -16,12 +16,27 @@ body {
   margin: auto;
 }
 
+/* ======================
+   HEADINGS
+====================== */
+
 h1,
 h2,
 h3 {
 
   color: #1f4e79;
 }
+
+h3 {
+
+  margin-top: 40px;
+
+  margin-bottom: 15px;
+}
+
+/* ======================
+   SEARCH
+====================== */
 
 #searchInput {
 
@@ -36,7 +51,13 @@ h3 {
   border: 1px solid #ccc;
 
   font-size: 16px;
+
+  box-sizing: border-box;
 }
+
+/* ======================
+   CLIENT LIST
+====================== */
 
 .client-list {
 
@@ -66,23 +87,37 @@ h3 {
 .client-card:hover {
 
   transform: translateY(-3px);
+
+  background: #f8fbff;
 }
+
+/* ======================
+   HIDDEN SECTION
+====================== */
 
 .hidden {
 
   display: none;
 }
 
+/* ======================
+   TOP BAR
+====================== */
+
 .top-bar {
 
   margin-bottom: 20px;
 }
 
+/* ======================
+   BUTTONS
+====================== */
+
 .back-btn,
 .show-btn,
 .copy-btn {
 
-  padding: 10px 15px;
+  padding: 8px 14px;
 
   border: none;
 
@@ -91,11 +126,18 @@ h3 {
   cursor: pointer;
 
   color: white;
+
+  font-size: 14px;
 }
 
 .back-btn {
 
   background: #1f4e79;
+}
+
+.back-btn:hover {
+
+  background: #16395a;
 }
 
 .show-btn {
@@ -105,12 +147,26 @@ h3 {
   margin-left: 5px;
 }
 
+.show-btn:hover {
+
+  background: #0062cc;
+}
+
 .copy-btn {
 
   background: #17a2b8;
 
   margin-left: 5px;
 }
+
+.copy-btn:hover {
+
+  background: #117a8b;
+}
+
+/* ======================
+   TABLES
+====================== */
 
 table {
 
@@ -121,6 +177,9 @@ table {
   background: white;
 
   margin-bottom: 30px;
+
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.08);
 }
 
 th,
@@ -131,6 +190,8 @@ td {
   padding: 12px;
 
   text-align: left;
+
+  vertical-align: middle;
 }
 
 th {
@@ -138,11 +199,58 @@ th {
   background: #1f4e79;
 
   color: white;
+
+  font-weight: 600;
 }
+
+tr:nth-child(even) {
+
+  background: #f9f9f9;
+}
+
+tr:hover {
+
+  background: #f1f7ff;
+}
+
+/* ======================
+   LINKS
+====================== */
 
 a {
 
   color: #007bff;
 
   text-decoration: none;
+
+  word-break: break-all;
+}
+
+a:hover {
+
+  text-decoration: underline;
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+@media (max-width: 768px) {
+
+  table {
+
+    font-size: 13px;
+  }
+
+  th,
+  td {
+
+    padding: 8px;
+  }
+
+  .show-btn,
+  .copy-btn {
+
+    margin-top: 5px;
+  }
 }
