@@ -20,9 +20,9 @@
 
   <div class="container">
 
-    <!-- =========================
-         PAGE 1 : CLIENT LIST  
-    ========================== -->
+    <!-- ======================
+         HOME PAGE
+    ======================= -->
 
     <div id="homePage">
 
@@ -36,15 +36,6 @@
         placeholder="Search Client..."
       >
 
-      <!-- ADD CLIENT -->
-
-      <button
-        class="add-btn"
-        onclick="createClientPage()"
-      >
-        + Add Client
-      </button>
-
       <!-- CLIENT LIST -->
 
       <div
@@ -54,36 +45,29 @@
 
     </div>
 
-    <!-- =========================
-         PAGE 2 : CLIENT DETAILS
-    ========================== -->
+    <!-- ======================
+         CLIENT PAGE
+    ======================= -->
 
     <div
       id="credentialsSection"
       class="hidden"
     >
 
-      <!-- TOP ACTIONS -->
+      <!-- TOP BAR -->
 
       <div class="top-bar">
 
         <button
-          onclick="goBack()"
           class="back-btn"
+          onclick="goBack()"
         >
           ← Back
         </button>
 
-        <button
-          class="add-btn"
-          onclick="addCredential()"
-        >
-          + Add Credential
-        </button>
-
       </div>
 
-      <!-- CLIENT NAME -->
+      <!-- CLIENT TITLE -->
 
       <h2 id="clientTitle"></h2>
 
