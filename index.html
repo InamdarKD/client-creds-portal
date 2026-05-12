@@ -1,128 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- ======================
+     BTP CREDENTIALS
+====================== -->
 
-<head>
+<h3>BTP Credentials</h3>
 
-  <meta charset="UTF-8">
+<table>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <thead>
 
-  <title>Client Credentials Portal</title>
+    <tr>
+      <th>BTP User</th>
+      <th>Password</th>
+    </tr>
 
-  <link rel="stylesheet" href="style.css">
+  </thead>
 
-</head>
+  <tbody id="btpTable"></tbody>
 
-<body>
+</table>
 
-  <div class="container">
+<!-- ======================
+     COMMUNICATION IDS
+====================== -->
 
-    <!-- ======================
-         HOME PAGE
-    ======================= -->
+<h3>Communication IDs</h3>
 
-    <div id="homePage">
+<table>
 
-      <h1>Client Credentials Portal</h1>
+  <thead>
 
-      <!-- SEARCH -->
+    <tr>
+      <th>System</th>
+      <th>URL</th>
+      <th>Communication User</th>
+      <th>Password</th>
+    </tr>
 
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search Client..."
-      >
+  </thead>
 
-      <!-- CLIENT LIST -->
+  <tbody id="communicationTable"></tbody>
 
-      <div
-        id="clientList"
-        class="client-list"
-      ></div>
+</table>
 
-    </div>
+<!-- ======================
+     CLOUD CREDENTIALS
+====================== -->
 
-    <!-- ======================
-         CLIENT PAGE
-    ======================= -->
+<h3>Cloud Credentials</h3>
 
-    <div
-      id="credentialsSection"
-      class="hidden"
-    >
+<table>
 
-      <!-- TOP BAR -->
+  <thead>
 
-      <div class="top-bar">
+    <tr>
+      <th>System</th>
+      <th>URL</th>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
 
-        <button
-          class="back-btn"
-          onclick="goBack()"
-        >
-          ← Back
-        </button>
+  </thead>
 
-      </div>
+  <tbody id="credentialsTable"></tbody>
 
-      <!-- CLIENT TITLE -->
-
-      <h2 id="clientTitle"></h2>
-
-      <!-- ======================
-           USER CREDENTIALS
-      ======================= -->
-
-      <h3>User Credentials</h3>
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>System</th>
-            <th>URL</th>
-            <th>Username</th>
-            <th>Password</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="credentialsTable"></tbody>
-
-      </table>
-
-      <!-- ======================
-           COMMUNICATION IDS
-      ======================= -->
-
-      <h3>Communication IDs</h3>
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>System</th>
-            <th>URL</th>
-            <th>Communication User</th>
-            <th>Password</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="communicationTable"></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-  <script src="app.js"></script>
-
-</body>
-
-</html>
+</table>
