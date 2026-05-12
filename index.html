@@ -1,15 +1,28 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Client Credentials Portal</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
   <div class="container">
 
     <h1>Client Credentials Portal</h1>
+
+    <!-- SEARCH -->
 
     <input
       type="text"
@@ -17,29 +30,76 @@
       placeholder="Search Client..."
     >
 
-    <div id="clientList" class="client-list"></div>
+    <!-- ADD CLIENT BUTTON -->
 
-    <div id="credentialsSection" class="hidden">
-      <button onclick="goBack()" class="back-btn">← Back</button>
+    <button
+      class="add-btn"
+      onclick="addNewClient()"
+    >
+      + Add Client
+    </button>
+
+    <!-- CLIENT LIST -->
+
+    <div
+      id="clientList"
+      class="client-list"
+    ></div>
+
+    <!-- CREDENTIAL SECTION -->
+
+    <div
+      id="credentialsSection"
+      class="hidden"
+    >
+
+      <!-- BACK BUTTON -->
+
+      <button
+        onclick="goBack()"
+        class="back-btn"
+      >
+        ← Back
+      </button>
+
+      <!-- ADD CREDENTIAL BUTTON -->
+
+      <button
+        class="add-btn"
+        onclick="addCredential()"
+      >
+        + Add Credential
+      </button>
+
+      <!-- CLIENT TITLE -->
 
       <h2 id="clientTitle"></h2>
 
+      <!-- CREDENTIAL TABLE -->
+
       <table>
+
         <thead>
+
           <tr>
             <th>System</th>
             <th>URL</th>
             <th>Username</th>
             <th>Password</th>
           </tr>
+
         </thead>
 
         <tbody id="credentialsTable"></tbody>
+
       </table>
+
     </div>
 
   </div>
 
   <script src="app.js"></script>
+
 </body>
+
 </html>
