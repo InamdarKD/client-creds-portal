@@ -2,16 +2,22 @@
   "client": "PRIMUS",
   "credentials": [
     {
-      "system": "SAP BTP",
-      "url": "https://example.com",
-      "username": "admin",
-      "password": "Admin@123"
+      "system": "Public Cloud",
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "sourabh.pawar",
+      "password": "Primus_Cloud"
     },
     {
       "system": "Public Cloud",
-      "url": "https://cloud.example.com",
-      "username": "cloud-admin",
-      "password": "Cloud@456"
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "Primus",
+      "password": "Primus@2025"
+    },
+    {
+      "system": "Public Cloud",
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "mangesh.khadse@primustechsys.com",
+      "password": "Primus@101958"
     }
   ]
 }
