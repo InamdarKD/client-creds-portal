@@ -1,6 +1,26 @@
 {
   "client": "PRIMUS",
 
+  "btpCredentials": [
+    {
+      "username": "btp_admin",
+      "password": "BTP@123"
+    },
+    {
+      "username": "btp_support",
+      "password": "Support@456"
+    }
+  ],
+
+  "communicationIds": [
+    {
+      "system": "Public Cloud",
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "reshma_comm",
+      "password": "#e/+DkPhA[hb@]SEsqxtFr[RwGP3p4S}fr9g#QiR"
+    }
+  ],
+
   "credentials": [
     {
       "system": "Public Cloud",
@@ -13,21 +33,6 @@
       "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
       "username": "Primus",
       "password": "Primus@2025"
-    },
-    {
-      "system": "Public Cloud",
-      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
-      "username": "mangesh.khadse@primustechsys.com",
-      "password": "Primus@101958"
-    }
-  ],
-
-  "communicationIds": [
-    {
-      "system": "Public Cloud",
-      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
-      "username": "reshma_comm",
-      "password": "#e/+DkPhA[hb@]SEsqxtFr[RwGP3p4S}fr9g#QiR"
     }
   ]
 }
