@@ -126,7 +126,7 @@ async function loadClientCredentials(clientId) {
               href="${cred.url}"
               target="_blank"
             >
-              Open Link
+              ${cred.url}
             </a>
           </td>
 
