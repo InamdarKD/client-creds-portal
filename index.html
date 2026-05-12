@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Credentials Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Client Credentials Portal</h1>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search Client..."
+    >
+
+    <div id="clientList" class="client-list"></div>
+
+    <div id="credentialsSection" class="hidden">
+      <button onclick="goBack()" class="back-btn">← Back</button>
+
+      <h2 id="clientTitle"></h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>URL</th>
+            <th>Username</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+
+        <tbody id="credentialsTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
