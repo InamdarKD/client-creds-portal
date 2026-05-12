@@ -51,11 +51,6 @@ function renderClients(clientList) {
 
     card.addEventListener('click', () => {
 
-      console.log(
-        'Opening Client:',
-        client.id
-      );
-
       loadClientCredentials(client.id);
     });
 
@@ -70,11 +65,6 @@ function renderClients(clientList) {
 async function loadClientCredentials(clientId) {
 
   try {
-
-    console.log(
-      'Loading File:',
-      `./data/${clientId}.json`
-    );
 
     const response =
       await fetch(`./data/${clientId}.json`);
@@ -91,10 +81,15 @@ async function loadClientCredentials(clientId) {
 
     console.log('Client Data:', data);
 
-    /* STORE CURRENT CREDS */
+    /* STORE USER CREDS */
 
     window.currentCredentials =
-      data.credentials;
+      data.credentials || [];
+
+    /* STORE COMM CREDS */
+
+    window.currentCommCredentials =
+      data.communicationIds || [];
 
     /* TITLE */
 
@@ -102,7 +97,9 @@ async function loadClientCredentials(clientId) {
       'clientTitle'
     ).innerText = data.client;
 
-    /* TABLE */
+    /* =========================
+       USER CREDENTIAL TABLE
+    ========================== */
 
     const table =
       document.getElementById(
@@ -162,6 +159,68 @@ async function loadClientCredentials(clientId) {
       }
     );
 
+    /* =========================
+       COMMUNICATION IDS TABLE
+    ========================== */
+
+    const commTable =
+      document.getElementById(
+        'communicationTable'
+      );
+
+    commTable.innerHTML = '';
+
+    data.communicationIds.forEach(
+      (cred, index) => {
+
+        const row =
+          document.createElement('tr');
+
+        row.innerHTML = `
+
+          <td>${cred.system}</td>
+
+          <td>
+            <a
+              href="${cred.url}"
+              target="_blank"
+            >
+              ${cred.url}
+            </a>
+          </td>
+
+          <td>${cred.username}</td>
+
+          <td>
+
+            <span id="comm-pwd-${index}">
+              ••••••••
+            </span>
+
+            <button
+              class="show-btn"
+              onclick="toggleCommPassword(
+                ${index},
+                '${cred.password}'
+              )"
+            >
+              Show
+            </button>
+
+            <button
+              class="copy-btn"
+              onclick="copyCommCredentialByIndex(${index})"
+            >
+              Copy
+            </button>
+
+          </td>
+        `;
+
+        commTable.appendChild(row);
+      }
+    );
+
     /* PAGE SWITCH */
 
     document
@@ -180,13 +239,13 @@ async function loadClientCredentials(clientId) {
     );
 
     alert(
-      'Unable to load client credentials. Check console.'
+      'Unable to load client credentials.'
     );
   }
 }
 
 /* =========================
-   SHOW / HIDE PASSWORD
+   SHOW PASSWORD
 ========================= */
 
 function togglePassword(index, password) {
@@ -207,7 +266,7 @@ function togglePassword(index, password) {
 }
 
 /* =========================
-   COPY CREDENTIAL
+   COPY USER CREDS
 ========================= */
 
 function copyCredentialByIndex(index) {
@@ -224,6 +283,49 @@ Password: ${cred.password}`;
   navigator.clipboard.writeText(payload);
 
   alert('Credential copied');
+}
+
+/* =========================
+   SHOW COMM PASSWORD
+========================= */
+
+function toggleCommPassword(index, password) {
+
+  const element =
+    document.getElementById(
+      `comm-pwd-${index}`
+    );
+
+  if (
+    element.innerText === '••••••••'
+  ) {
+
+    element.innerText = password;
+
+  } else {
+
+    element.innerText = '••••••••';
+  }
+}
+
+/* =========================
+   COPY COMM CREDS
+========================= */
+
+function copyCommCredentialByIndex(index) {
+
+  const cred =
+    window.currentCommCredentials[index];
+
+  const payload =
+`System: ${cred.system}
+URL: ${cred.url}
+Communication User: ${cred.username}
+Password: ${cred.password}`;
+
+  navigator.clipboard.writeText(payload);
+
+  alert('Communication credential copied');
 }
 
 /* =========================
