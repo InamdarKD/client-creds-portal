@@ -3,15 +3,9 @@
   "credentials": [
     {
       "system": "SAP BTP",
-      "url": "https://btp-primus.example.com",
-      "username": "admin@primus.com",
-      "password": "Primus@123"
-    },
-    {
-      "system": "Public Cloud",
-      "url": "https://publiccloud-primus.example.com",
-      "username": "cloud-admin",
-      "password": "Cloud@456"
+      "url": "https://google.com",
+      "username": "admin",
+      "password": "Admin@123"
     }
   ]
 }
