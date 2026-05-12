@@ -20,62 +20,74 @@
 
   <div class="container">
 
-    <h1>Client Credentials Portal</h1>
+    <!-- =========================
+         PAGE 1 : CLIENT LIST
+    ========================== -->
 
-    <!-- SEARCH -->
+    <div id="homePage">
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search Client..."
-    >
+      <h1>Client Credentials Portal</h1>
 
-    <!-- ADD CLIENT BUTTON -->
+      <!-- SEARCH -->
 
-    <button
-      class="add-btn"
-      onclick="addNewClient()"
-    >
-      + Add Client
-    </button>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search Client..."
+      >
 
-    <!-- CLIENT LIST -->
+      <!-- ADD CLIENT -->
 
-    <div
-      id="clientList"
-      class="client-list"
-    ></div>
+      <button
+        class="add-btn"
+        onclick="createClientPage()"
+      >
+        + Add Client
+      </button>
 
-    <!-- CREDENTIAL SECTION -->
+      <!-- CLIENT LIST -->
+
+      <div
+        id="clientList"
+        class="client-list"
+      ></div>
+
+    </div>
+
+    <!-- =========================
+         PAGE 2 : CLIENT DETAILS
+    ========================== -->
 
     <div
       id="credentialsSection"
       class="hidden"
     >
 
-      <!-- BACK BUTTON -->
+      <!-- TOP ACTIONS -->
 
-      <button
-        onclick="goBack()"
-        class="back-btn"
-      >
-        ← Back
-      </button>
+      <div class="top-bar">
 
-      <!-- ADD CREDENTIAL BUTTON -->
+        <button
+          onclick="goBack()"
+          class="back-btn"
+        >
+          ← Back
+        </button>
 
-      <button
-        class="add-btn"
-        onclick="addCredential()"
-      >
-        + Add Credential
-      </button>
+        <button
+          class="add-btn"
+          onclick="addCredential()"
+        >
+          + Add Credential
+        </button>
 
-      <!-- CLIENT TITLE -->
+      </div>
+
+      <!-- CLIENT NAME -->
 
       <h2 id="clientTitle"></h2>
 
-      <!-- CREDENTIAL TABLE -->
+      <!-- TABLE -->
 
       <table>
 
