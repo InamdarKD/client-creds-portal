@@ -11,13 +11,14 @@ body {
 
 .container {
 
-  max-width: 1200px;
+  max-width: 1400px;
 
   margin: auto;
 }
 
 h1,
-h2 {
+h2,
+h3 {
 
   color: #1f4e79;
 }
@@ -118,6 +119,8 @@ table {
   border-collapse: collapse;
 
   background: white;
+
+  margin-bottom: 30px;
 }
 
 th,
