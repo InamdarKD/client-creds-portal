@@ -1,5 +1,6 @@
 {
   "client": "PRIMUS",
+
   "credentials": [
     {
       "system": "Public Cloud",
@@ -12,12 +13,21 @@
       "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
       "username": "Primus",
       "password": "Primus@2025"
+    }
+  ],
+
+  "communicationIds": [
+    {
+      "system": "CPI",
+      "url": "https://cpi.example.com",
+      "username": "COMM_USER_01",
+      "password": "Comm@123"
     },
     {
-      "system": "Public Cloud",
-      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
-      "username": "mangesh.khadse@primustechsys.com",
-      "password": "Primus@101958"
+      "system": "API",
+      "url": "https://api.example.com",
+      "username": "API_COMM",
+      "password": "Api@123"
     }
   ]
 }
