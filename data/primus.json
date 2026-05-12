@@ -13,15 +13,21 @@
       "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
       "username": "Primus",
       "password": "Primus@2025"
+    },
+    {
+      "system": "Public Cloud",
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "mangesh.khadse@primustechsys.com",
+      "password": "Primus@101958"
     }
   ],
 
   "communicationIds": [
     {
-      "system": "CPI",
-      "url": "https://cpi.example.com",
-      "username": "COMM_USER_01",
-      "password": "Comm@123"
+      "system": "Public Cloud",
+      "url": "https://my403809.s4hana.cloud.sap/ui#Shell-home",
+      "username": "reshma_comm",
+      "password": "#e/+DkPhA[hb@]SEsqxtFr[RwGP3p4S}fr9g#QiR"
     }
   ]
 }
