@@ -1,5 +1,9 @@
 let clients = [];
 
+/* --------------------------
+   LOAD INITIAL CLIENTS
+---------------------------*/
+
 async function loadClients() {
 
   try {
@@ -8,7 +12,11 @@ async function loadClients() {
 
     clients = await response.json();
 
-    console.log(clients);
+    /* Load locally added clients */
+    const localClients =
+      JSON.parse(localStorage.getItem('clients')) || [];
+
+    clients = [...clients, ...localClients];
 
     renderClients(clients);
 
@@ -19,9 +27,14 @@ async function loadClients() {
   }
 }
 
+/* --------------------------
+   RENDER CLIENT LIST
+---------------------------*/
+
 function renderClients(clientList) {
 
-  const container = document.getElementById('clientList');
+  const container =
+    document.getElementById('clientList');
 
   container.innerHTML = '';
 
@@ -35,82 +48,112 @@ function renderClients(clientList) {
       <h3>${client.name}</h3>
     `;
 
-    card.onclick = () => loadClientCredentials(client.id);
+    card.onclick = () =>
+      loadClientCredentials(client.id);
 
     container.appendChild(card);
   });
 }
 
+/* --------------------------
+   LOAD CLIENT CREDENTIALS
+---------------------------*/
+
 async function loadClientCredentials(clientId) {
+
+  let data = null;
 
   try {
 
-    const response = await fetch(`./data/${clientId}.json`);
+    const response =
+      await fetch(`./data/${clientId}.json`);
 
-    const data = await response.json();
+    data = await response.json();
 
-    document.getElementById('clientTitle').innerText = data.client;
+  } catch {
 
-    const table = document.getElementById('credentialsTable');
+    /* Local client fallback */
 
-    table.innerHTML = '';
+    const localData =
+      JSON.parse(localStorage.getItem(clientId));
 
-    data.credentials.forEach((cred, index) => {
-
-      const row = document.createElement('tr');
-
-      row.innerHTML = `
-        <td>${cred.system}</td>
-
-        <td>
-          <a href="${cred.url}" target="_blank">
-            Open Link
-          </a>
-        </td>
-
-        <td>${cred.username}</td>
-
-        <td>
-          <span id="pwd-${index}">••••••••</span>
-
-          <button
-            class="show-btn"
-            onclick="togglePassword(${index}, '${cred.password}')"
-          >
-            Show
-          </button>
-
-          <button
-            class="copy-btn"
-            onclick="copyPassword('${cred.password}')"
-          >
-            Copy
-          </button>
-        </td>
-      `;
-
-      table.appendChild(row);
-
-    });
-
-    document.getElementById('clientList').classList.add('hidden');
-
-    document.getElementById('searchInput').classList.add('hidden');
-
-    document
-      .getElementById('credentialsSection')
-      .classList.remove('hidden');
-
-  } catch (error) {
-
-    console.error('Error loading credentials:', error);
-
+    data = localData;
   }
+
+  if (!data) return;
+
+  document.getElementById('clientTitle').innerText =
+    data.client;
+
+  const table =
+    document.getElementById('credentialsTable');
+
+  table.innerHTML = '';
+
+  data.credentials.forEach((cred, index) => {
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${cred.system}</td>
+
+      <td>
+        <a href="${cred.url}" target="_blank">
+          Open Link
+        </a>
+      </td>
+
+      <td>${cred.username}</td>
+
+      <td>
+        <span id="pwd-${index}">
+          ••••••••
+        </span>
+
+        <button
+          class="show-btn"
+          onclick="togglePassword(${index}, '${cred.password}')"
+        >
+          Show
+        </button>
+
+        <button
+          class="copy-btn"
+          onclick='copyCredential(${JSON.stringify(cred)})'
+        >
+          Copy
+        </button>
+      </td>
+    `;
+
+    table.appendChild(row);
+  });
+
+  /* Save selected client globally */
+
+  window.currentClientId = clientId;
+
+  document
+    .getElementById('clientList')
+    .classList.add('hidden');
+
+  document
+    .getElementById('searchInput')
+    .classList.add('hidden');
+
+  document
+    .getElementById('credentialsSection')
+    .classList.remove('hidden');
 }
+
+/* --------------------------
+   SHOW / HIDE PASSWORD
+---------------------------*/
 
 function togglePassword(index, password) {
 
-  const element = document.getElementById(`pwd-${index}`);
+  const element =
+    document.getElementById(`pwd-${index}`);
 
   if (element.innerText === '••••••••') {
 
@@ -119,16 +162,29 @@ function togglePassword(index, password) {
   } else {
 
     element.innerText = '••••••••';
-
   }
 }
 
-function copyPassword(password) {
+/* --------------------------
+   COPY FULL PAYLOAD
+---------------------------*/
 
-  navigator.clipboard.writeText(password);
+function copyCredential(cred) {
 
-  alert('Password copied');
+  const payload =
+`System: ${cred.system}
+URL: ${cred.url}
+Username: ${cred.username}
+Password: ${cred.password}`;
+
+  navigator.clipboard.writeText(payload);
+
+  alert('Credential copied');
 }
+
+/* --------------------------
+   BACK BUTTON
+---------------------------*/
 
 function goBack() {
 
@@ -145,17 +201,117 @@ function goBack() {
     .classList.remove('hidden');
 }
 
+/* --------------------------
+   SEARCH CLIENTS
+---------------------------*/
+
 document
   .getElementById('searchInput')
   .addEventListener('keyup', function () {
 
-    const value = this.value.toLowerCase();
+    const value =
+      this.value.toLowerCase();
 
-    const filtered = clients.filter(client =>
-      client.name.toLowerCase().includes(value)
-    );
+    const filtered =
+      clients.filter(client =>
+        client.name.toLowerCase().includes(value)
+      );
 
     renderClients(filtered);
   });
+
+/* --------------------------
+   ADD NEW CLIENT
+---------------------------*/
+
+function addNewClient() {
+
+  const clientName =
+    prompt('Enter Client Name');
+
+  if (!clientName) return;
+
+  const clientId =
+    clientName.toLowerCase().replace(/\s+/g, '-');
+
+  const newClient = {
+    id: clientId,
+    name: clientName
+  };
+
+  clients.push(newClient);
+
+  /* Save client list */
+
+  localStorage.setItem(
+    'clients',
+    JSON.stringify(
+      clients.filter(c =>
+        !['primus'].includes(c.id)
+      )
+    )
+  );
+
+  /* Create empty credential structure */
+
+  const clientData = {
+    client: clientName,
+    credentials: []
+  };
+
+  localStorage.setItem(
+    clientId,
+    JSON.stringify(clientData)
+  );
+
+  renderClients(clients);
+
+  alert('Client Added');
+}
+
+/* --------------------------
+   ADD NEW CREDENTIAL
+---------------------------*/
+
+function addCredential() {
+
+  const system =
+    prompt('System Name');
+
+  const url =
+    prompt('URL');
+
+  const username =
+    prompt('Username');
+
+  const password =
+    prompt('Password');
+
+  const clientId =
+    window.currentClientId;
+
+  const clientData =
+    JSON.parse(localStorage.getItem(clientId));
+
+  clientData.credentials.push({
+    system,
+    url,
+    username,
+    password
+  });
+
+  localStorage.setItem(
+    clientId,
+    JSON.stringify(clientData)
+  );
+
+  loadClientCredentials(clientId);
+
+  alert('Credential Added');
+}
+
+/* --------------------------
+   INITIAL LOAD
+---------------------------*/
 
 loadClients();
