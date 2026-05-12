@@ -18,10 +18,10 @@
 
   "communicationIds": [
     {
-      "system": "CPI",
-      "url": "https://cpi.example.com",
-      "username": "COMM_USER_01",
-      "password": "Comm@123"
+      "system": "BTP Global Account",
+      "url": "",
+      "username": "reshma.pawar@primustechsys.com",
+      "password": "Iaap@5143"
     },
     {
       "system": "API",
