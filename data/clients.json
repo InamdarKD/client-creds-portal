@@ -1,86 +1,107 @@
 [
   {
     "id": "primus",
-    "name": "PRIMUS"
+    "name": "Primus Techsystems Pvt Ltd",
+    "filter": "PRIMUS"
   },
   {
     "id": "sdipl",
-    "name": "SDIPL"
+    "name": "Shri Dutt India Pvt Ltd",
+    "filter": "SDIPL"
   },
   {
     "id": "acepl",
-    "name": "ACEPL"
+    "name": "Active Chromewell Exhaust Pvt Ltd",
+    "filter": "ACEPL"
   },
   {
     "id": "rapl",
-    "name": "RAPL"
+    "name": "Reliable Autotech Pvt Ltd",
+    "filter": "RAPL"
   },
   {
     "id": "shubhash-sarees",
-    "name": "Shubhash Sarees"
+    "name": "Shubhash Sarees Pvt Ltd",
+    "filter": "Shubhash Sarees"
   },
   {
     "id": "kg-flexx",
-    "name": "KG Flexx"
+    "name": "KG Flexx Pvt Ltd",
+    "filter": "KG Flexx"
   },
   {
     "id": "sj",
-    "name": "SJ"
+    "name": "SJ Electricals",
+    "filter": "SJ"
   },
   {
     "id": "golde",
-    "name": "Golde"
+    "name": "CIE Golde Pune",
+    "filter": "Golde"
   },
   {
     "id": "carysil",
-    "name": "Carysil"
+    "name": "Carysil Ltd",
+    "filter": "Carysil"
   },
   {
     "id": "voss",
-    "name": "Voss"
+    "name": "VOSS Automotive India Pvt. Ltd",
+    "filter": "Voss"
   },
   {
     "id": "shivalik",
-    "name": "Shivalik"
+    "name": "Shivalik Engineering Industries Pvt Ltd",
+    "filter": "Shivalik"
   },
   {
     "id": "rptech",
-    "name": "RPtech"
+    "name": "RPtech",
+    "filter": "RPtech"
   },
   {
     "id": "indicus",
-    "name": "Indicus"
+    "name": "Indicus",
+    "filter": "Indicus"
   },
   {
     "id": "epitome",
-    "name": "Epitome"
+    "name": "Epitome Components Pvt Ltd",
+    "filter": "Epitome"
   },
   {
     "id": "chembond",
-    "name": "Chembond"
+    "name": "Chembond Chemicals Ltd",
+    "filter": "Chembond"
   },
   {
     "id": "fukoku",
-    "name": "Fukoku"
+    "name": "Fukoku India",
+    "filter": "Fukoku"
   },
   {
     "id": "electro-p",
-    "name": "Electro P"
+    "name": "Electro Pneumatics and Hydrolics India Pvt Ltd",
+    "filter": "Electro Pneumatics"
   },
   {
     "id": "victor-reinz",
-    "name": "Victor Reinz"
+    "name": "Victor Reinz India Pvt Ltd",
+    "filter": "Victor Reinz"
   },
   {
     "id": "rayzon-solar",
-    "name": "Rayzon Solar"
+    "name": "Rayzon Solar Pvt Ltd",
+    "filter": "Rayzon Solar"
   },
   {
     "id": "sound-casting",
-    "name": "Sound Casting"
+    "name": "Sound Casting Pvt Ltd",
+    "filter": "Sound Casting"
   },
   {
     "id": "uts",
-    "name": "UTS"
+    "name": "Unique Tooling Solutions Pvt Ltd",
+    "filter": "UTS"
   }
 ]
