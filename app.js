@@ -41,6 +41,17 @@ function renderClients(clientList) {
 
   container.innerHTML = '';
 
+  if (clientList.length === 0) {
+
+    container.innerHTML = `
+      <div class="client-card">
+        No Clients Found
+      </div>
+    `;
+
+    return;
+  }
+
   clientList.forEach(client => {
 
     const card =
@@ -49,7 +60,15 @@ function renderClients(clientList) {
     card.className = 'client-card';
 
     card.innerHTML = `
-      <h3>${client.name}</h3>
+
+      <h3>
+        ${client.filter || client.name}
+      </h3>
+
+      <p>
+        ${client.name || ''}
+      </p>
+
     `;
 
     card.addEventListener('click', () => {
@@ -111,7 +130,7 @@ async function loadClientCredentials(clientId) {
       data.client || clientId;
 
     /* =========================
-       USER CREDENTIALS
+       USER CREDENTIALS TABLE
     ========================== */
 
     const table =
@@ -121,59 +140,72 @@ async function loadClientCredentials(clientId) {
 
     table.innerHTML = '';
 
-    credentials.forEach(
-      (cred, index) => {
+    if (credentials.length > 0) {
 
-        const row =
-          document.createElement('tr');
+      credentials.forEach(
+        (cred, index) => {
 
-        row.innerHTML = `
+          const row =
+            document.createElement('tr');
 
-          <td>${cred.system || ''}</td>
+          row.innerHTML = `
 
-          <td>
-            <a
-              href="${cred.url || '#'}"
-              target="_blank"
-            >
-              ${cred.url || ''}
-            </a>
+            <td>${cred.system || ''}</td>
+
+            <td>
+              <a
+                href="${cred.url || '#'}"
+                target="_blank"
+              >
+                ${cred.url || ''}
+              </a>
+            </td>
+
+            <td>${cred.username || ''}</td>
+
+            <td>
+
+              <span id="pwd-${index}">
+                ••••••••
+              </span>
+
+              <button
+                class="show-btn"
+                onclick="togglePassword(
+                  ${index},
+                  '${cred.password || ''}'
+                )"
+              >
+                Show
+              </button>
+
+              <button
+                class="copy-btn"
+                onclick="copyCredentialByIndex(${index})"
+              >
+                Copy
+              </button>
+
+            </td>
+          `;
+
+          table.appendChild(row);
+        }
+      );
+
+    } else {
+
+      table.innerHTML = `
+        <tr>
+          <td colspan="4">
+            No User Credentials Available
           </td>
-
-          <td>${cred.username || ''}</td>
-
-          <td>
-
-            <span id="pwd-${index}">
-              ••••••••
-            </span>
-
-            <button
-              class="show-btn"
-              onclick="togglePassword(
-                ${index},
-                '${cred.password || ''}'
-              )"
-            >
-              Show
-            </button>
-
-            <button
-              class="copy-btn"
-              onclick="copyCredentialByIndex(${index})"
-            >
-              Copy
-            </button>
-
-          </td>
-        `;
-
-        table.appendChild(row);
-      }
-    );
+        </tr>
+      `;
+    }
 
     /* =========================
-       COMMUNICATION IDS
+       COMMUNICATION IDS TABLE
     ========================== */
 
     const commTable =
@@ -376,7 +408,7 @@ function goBack() {
 }
 
 /* =========================
-   SEARCH
+   SEARCH CLIENTS
 ========================= */
 
 document
@@ -386,14 +418,26 @@ document
     function () {
 
       const value =
-        this.value.toLowerCase();
+        this.value
+          .toLowerCase()
+          .trim();
 
       const filtered =
-        clients.filter(client =>
-          client.name
-            .toLowerCase()
-            .includes(value)
-        );
+        clients.filter(client => {
+
+          const name =
+            (client.name || '')
+              .toLowerCase();
+
+          const filter =
+            (client.filter || '')
+              .toLowerCase();
+
+          return (
+            name.includes(value) ||
+            filter.includes(value)
+          );
+        });
 
       renderClients(filtered);
     }
