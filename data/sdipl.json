@@ -3,36 +3,36 @@
   "credentials": [
     {
       "system": "BTP",
-      "url": "https://my401360.s4hana.cloud.sap",
+      "url": "",
       "username": "gautam@shridutt.com",
       "password": "Gautam@1234"
     },
     {
-      "system": "Dev Cloud",
+      "system": "Customizing Tenant",
       "url": "https://my401360.s4hana.cloud.sap/",
       "username": "Krushna",
       "password": "Primusmm@2024"
     },
     {
-      "system": "Dev Cloud",
+      "system": "Customizing Tenant",
       "url": "https://my401360.s4hana.cloud.sap/",
       "username": "purushottam.chaudhary@in.primustechsys.com",
       "password": "Bharat@4141"
     },
     {
-      "system": "Dev Cloud",
+      "system": "Customizing Tenant",
       "url": "https://my401360.s4hana.cloud.sap/",
       "username": "yash.tandel",
       "password": "Tandel@2025"
     },
     {
-      "system": "Dev Cloud",
+      "system": "Customizing Tenant",
       "url": "https://my401360.s4hana.cloud.sap/",
       "username": "harshal",
       "password": "Primus@2024"
     },
     {
-      "system": "Dev Cloud",
+      "system": "Customizing Tenant",
       "url": "https://my401360.s4hana.cloud.sap/",
       "username": "dattatraya.shinde",
       "password": "Primus@123"
