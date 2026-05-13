@@ -2,5 +2,85 @@
   {
     "id": "primus",
     "name": "PRIMUS"
+  },
+  {
+    "id": "sdipl",
+    "name": "SDIPL"
+  },
+  {
+    "id": "acepl",
+    "name": "ACEPL"
+  },
+  {
+    "id": "rapl",
+    "name": "RAPL"
+  },
+  {
+    "id": "shubhash-sarees",
+    "name": "Shubhash Sarees"
+  },
+  {
+    "id": "kg-flexx",
+    "name": "KG Flexx"
+  },
+  {
+    "id": "sj",
+    "name": "SJ"
+  },
+  {
+    "id": "golde",
+    "name": "Golde"
+  },
+  {
+    "id": "carysil",
+    "name": "Carysil"
+  },
+  {
+    "id": "voss",
+    "name": "Voss"
+  },
+  {
+    "id": "shivalik",
+    "name": "Shivalik"
+  },
+  {
+    "id": "rptech",
+    "name": "RPtech"
+  },
+  {
+    "id": "indicus",
+    "name": "Indicus"
+  },
+  {
+    "id": "epitome",
+    "name": "Epitome"
+  },
+  {
+    "id": "chembond",
+    "name": "Chembond"
+  },
+  {
+    "id": "fukoku",
+    "name": "Fukoku"
+  },
+  {
+    "id": "electro-p",
+    "name": "Electro P"
+  },
+  {
+    "id": "victor-reinz",
+    "name": "Victor Reinz"
+  },
+  {
+    "id": "rayzon-solar",
+    "name": "Rayzon Solar"
+  },
+  {
+    "id": "sound-casting",
+    "name": "Sound Casting"
+  },
+  {
+    "id": "uts",
+    "name": "UTS"
   }
 ]
